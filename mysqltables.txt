@@ -13,8 +13,7 @@ create table stories (
     title TINYTEXT not null,
     body TEXT not null,
     username VARCHAR(255) not null,
-    link_id MEDIUMINT unsigned not null,
-    link TEXT not null,
+    link TEXT,
     primary key (story_id),
     foreign key (username) references users (username)
 ) engine = InnoDB default character set = utf8 collate = utf8_general_ci;
