@@ -1,0 +1,39 @@
+html {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h1 {
+    color: darkblue;
+    background-color: lightsteelblue;
+    padding: 30px;
+    text-align: center;
+}
+
+#loginstuff {
+    text-align: center;
+}
+
+input[type=submit], input[type=button] {
+    background-color: lightsteelblue;
+    color: darkblue;
+    border-radius: 5px;
+}
+
+input[type=file] {
+    color: darkblue;
+}
+
+hr {
+    border: 1px solid darkblue;
+}
+
+img {
+    align-items: center;
+    height: 70px;
+    width: 70px;
+
+}
+
+input[type=text]:hover {
+    background-color: lightsteelblue;
+  }

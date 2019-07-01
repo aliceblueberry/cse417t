@@ -5,16 +5,34 @@
     $newPassword = $_POST['newPassword'];
     $pwd_hash = password_hash($newPassword, PASSWORD_BCRYPT);
 
-    $stmt = $mysqli->prepare("insert into users (username, hashed_password) values (?, ?)");
-    if(!$stmt){
+    $checkuser = $mysqli->query("SELECT username FROM users WHERE username='newUser'");
+    if(!$checkuser) {
         printf("Query Prep Failed: %s\n", $mysqli->error);
         exit;
     }
+    
+    if($checkuser->num_rows > 0) {
+        header("Location: createuserfail.php");
 
-    $stmt->bind_param('ss', $newUser, $pwd_hash);
+    }
+    else {
+        $stmt = $mysqli->prepare("insert into users (username, hashed_password) values (?, ?)");
+        if(!$stmt){
+            printf("Query Prep Failed: %s\n", $mysqli->error);
+            exit;
+        }
 
-    $stmt->execute();
+        $stmt->bind_param('ss', $newUser, $pwd_hash);
 
-    $stmt->close();
+        $stmt->execute();
 
-    ?>
+        $stmt->close();
+        header("Location: createusersuccess.php");
+    }
+
+    $checkuser->close();
+    
+   
+    
+        
+?>

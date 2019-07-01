@@ -1,38 +1,32 @@
-List of mysql commands to create the necessary tables for the news site:
+List of mysql commands to create the necessary databases and tables for the news site:
+
+create database NEWSSITE;
 
 create table users (
-    username VARCHAR(50) not null,
-    hashed_password CHAR(50) not null,
-    primary key (username, hashed_password)
-) engine = InnoDB default character set = utf8 collate = utf8_general_ci;
-
-create table comments (
-    comment_id MEDIUMINT unsigned not null auto_increment,
-    body TEXT not null,
-    username VARCHAR(50) not null,
-    story MEDIUMINT unsigned not null,
-    primary key (comment_id),
-    foreign key (username) references users (username),
-    foreign key (story) references stories (story_id)
-) engine = InnoDB default character set = utf8 collate = utf8_general_ci;
-
-
-
-create table links (
-    link_id MEDIUMINT unsigned not null auto_increment,
-    link TEXT not null,
-    username VARCHAR(50) not null,
-    story MEDIUMINT unsigned not null,
-    primary key (link_id),
-    foreign key (username) references users (username),
-    foreign key (story) references stories (story_id)
+    username VARCHAR(255) not null,
+    hashed_password VARCHAR(255) not null,
+    primary key (username)
 ) engine = InnoDB default character set = utf8 collate = utf8_general_ci;
 
 create table stories ( 
     story_id MEDIUMINT unsigned not null auto_increment,
     title TINYTEXT not null,
     body TEXT not null,
-    username VARCHAR(50) not null,
+    username VARCHAR(255) not null,
+    link_id MEDIUMINT unsigned not null,
+    link TEXT not null,
     primary key (story_id),
     foreign key (username) references users (username)
 ) engine = InnoDB default character set = utf8 collate = utf8_general_ci;
+
+
+create table comments (
+    comment_id MEDIUMINT unsigned not null auto_increment,
+    body TEXT not null,
+    username VARCHAR(255) not null,
+    story MEDIUMINT unsigned not null,
+    primary key (comment_id),
+    foreign key (username) references users (username),
+    foreign key (story) references stories (story_id)
+) engine = InnoDB default character set = utf8 collate = utf8_general_ci;
+
