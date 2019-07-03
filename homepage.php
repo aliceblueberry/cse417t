@@ -9,6 +9,7 @@
             session_start();
             $user_id = $_SESSION['user_id']; //creates a session username using the inputted username
             if ($user_id == null) {
+                //question: unregistered users could still view the homepage (by rubrics)
                 header("Location: loginpage.php");
             }
         ?>
@@ -22,8 +23,8 @@
         </form>
         <?php
            require 'database.php';
-           
-           $stmt = $mysqli->prepare("select story_id, title, username, link from stories order by story_id");
+           //edits: limit 10 query that limits the number of stories displayed on homepage
+           $stmt = $mysqli->prepare("select story_id, title, username, link from stories order by story_id limit 10");
            if(!$stmt){
                printf("Query Prep Failed: %s\n", $mysqli->error);
                exit;

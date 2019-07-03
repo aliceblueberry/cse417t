@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <?php
 require 'database.php';
 //post the details of a story selected by link_id

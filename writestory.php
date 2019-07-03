@@ -10,9 +10,9 @@
         ?>
         <h1>Simple News Site</h1>
             <h2>Story Editor</h2>
-            <form action="login.php" method="POST"> <!-- goes to login php code. -->
-                Title: <input type="text" name="username"><br>
-                Story: <input type="text" name="username">
+            <form action="storyupload.php" method="POST"> <!-- goes to story upload php code. -->
+                Title: <input type="text" name="title"><br>
+                Story: <input type="text" name="story">
                 <!-- Link: <input type="text" name="username"> -->
                 <input type="submit" name="storysubmit" value="Publish">
             </form> 

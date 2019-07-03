@@ -11,7 +11,10 @@
     </form>
 
     <!----second part, comments, not finished>--->
-    <form>
+    <form action='comments.php' METHOD="POST">  <!----goes to comments php code-->
+
+    <!--check if in valid session--> 
+
 
     </form>
     </body>
